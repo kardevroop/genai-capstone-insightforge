@@ -19,17 +19,16 @@ from langchain.agents.agent import AgentExecutor
 from langchain.agents import initialize_agent, Tool
 from langchain.agents.agent_types import AgentType
 from langchain.memory import ConversationBufferMemory
-from utils import *
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import streamlit as st
 
-load_dotenv()
+# load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets["API_KEYS"]["OPENAI_API_KEY"]
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
-SERPAPI_API_KEY = os.getenv("SERPAPI_API_KEY")
+SERPAPI_API_KEY = st.secrets["API_KEYS"]["SERPAPI_API_KEY"]
 os.environ["SERPAPI_API_KEY"] = SERPAPI_API_KEY
 
 llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
